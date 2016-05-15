@@ -25,7 +25,7 @@ class PureData
     end
 
     def obj(klass, *args)
-      self.msg("obj", 10, 10, klass, *args)
+      self.msg("obj", 30 * @pdobjid, 30 * @pdobjid, klass, *args)
       id = @pdobjid
       @pdobjid += 1
       cls = PureData.dispatch_object_class(klass, *args)
@@ -33,7 +33,7 @@ class PureData
     end
 
     def msg_box(*args)
-      self.msg("msg", 10, 01, *args)
+      self.msg("msg", 30 * @pdobjid, 30 * @pdobjid, *args)
       id = @pdobjid
       @pdobjid += 1
       PdObject.new(@pd, self, id, 'msg', *args)
