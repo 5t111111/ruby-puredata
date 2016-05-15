@@ -32,6 +32,13 @@ class PureData
       cls.new(@pd, self, id, klass, *args)
     end
 
+    def msg_box(*args)
+      self.msg("msg", 10, 01, *args)
+      id = @pdobjid
+      @pdobjid += 1
+      PdObject.new(@pd, self, id, 'msg', *args)
+    end
+
     def connect(outlet, inlet)
       obj1, outletid = outlet.outlet_tuple
       obj2, inletid = inlet.inlet_tuple
